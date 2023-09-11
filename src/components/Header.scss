@@ -1,0 +1,15 @@
+header {
+  background: linear-gradient(#6107ab, #160dbc);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 15px;
+  height: 77px;
+  font-family: "Ubuntu";
+  margin-bottom: 45px;
+
+  h1, p {
+    color: #fff;
+    margin: 0;
+  }
+}
