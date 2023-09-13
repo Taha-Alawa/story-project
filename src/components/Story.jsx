@@ -3,6 +3,7 @@ import axios from 'axios'
 import './Story.scss';
 
 const Story = () => {
+  const [load, setLoad] = useState(true)
   const [theQisa, setTheQisa] = useState({
     title: "",
     bookName: "",
@@ -20,6 +21,9 @@ const Story = () => {
       setBookName(res.data.bookName)
     }
     newQisa()
+    setTimeout(() => {
+      setLoad(false)
+    }, 1000);
   }, [theQisa])
 
   const changeStory = () => {
@@ -30,12 +34,26 @@ const Story = () => {
     }))
   }
 
+  const Qisa = () => {
+    return (
+      <div>
+        <p>اسم القصة : {title}</p>
+        <p>{qisa}</p>
+        <p>اسم الكتاب: {bookName}</p>
+      </div>
+    )
+  }
+
+  const Loader = () => {
+    return (
+      <div class="loader"></div>
+    )
+  }
+
   return (
     <main>
       <h1>في كل مرة تضغط فيها على الزر ، تظهر لك قصة جديدة</h1>
-      <p>اسم القصة : {title}</p>
-      <p>{qisa}</p>
-      <p>اسم الكتاب: {bookName}</p>
+      {load ? (<Loader />) : (<Qisa />)}
       <button onClick={changeStory}>غير القصة</button>
     </main>
   );
